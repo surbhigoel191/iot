@@ -9,6 +9,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.http import HttpResponse
 from django import template
+from .models import Drone
 
 @login_required(login_url="/login/")
 def index(request):

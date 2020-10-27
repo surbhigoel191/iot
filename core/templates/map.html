@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Maps {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div id="googleMap" style="width:100%;height:550px;"></div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+  //$(document).ready(function() {
+    // Javascript method's body can be found in assets/js/demos.js
+    //demo.initGoogleMaps();
+  //});
+  
+    function myMap() {
+      {% for drone in drones %}
+        var mapProp= {
+          center:new google.maps.LatLng(drone.lat, drone.lon),
+          zoom:5,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      {% endfor %}
+    }
+  
+
+  
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv9BzFqmOFvXn9a4VVT6YvyO6jUZTJyvE&callback=myMap"></script>
+{% endblock javascripts %}
